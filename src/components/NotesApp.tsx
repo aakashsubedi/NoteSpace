@@ -22,7 +22,7 @@ const NotesApp: React.FC<NotesAppProps> = ({ onLogout }) => {
     const sampleNotes: Note[] = [
       {
         id: '1',
-        title: 'Welcome to SecureNotes',
+        title: 'Welcome to NoteSpace',
         content: 'This is your first secure note! Your thoughts are now protected with military-grade encryption.\n\nFeatures:\n• End-to-end encryption\n• Zero-knowledge architecture\n• Cross-device sync\n• Dark mode support\n\nStart writing your private thoughts securely!',
         createdAt: new Date('2024-01-15'),
         updatedAt: new Date('2024-01-15'),
@@ -120,10 +120,10 @@ const NotesApp: React.FC<NotesAppProps> = ({ onLogout }) => {
         <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center space-x-2">
-              <div className="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">SN</span>
+              <div className="h-8 w-8 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">NS</span>
               </div>
-              <span className="font-semibold text-gray-900 dark:text-white">SecureNotes</span>
+              <span className="font-semibold text-gray-900 dark:text-white">NoteSpace</span>
             </div>
             <div className="flex items-center space-x-2">
               <button
@@ -147,7 +147,7 @@ const NotesApp: React.FC<NotesAppProps> = ({ onLogout }) => {
 
           <button
             onClick={handleCreateNote}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center justify-center space-x-2 transition-colors"
+            className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-4 py-2 rounded-lg flex items-center justify-center space-x-2 transition-colors"
           >
             <Plus className="h-5 w-5" />
             <span>New Note</span>
@@ -163,7 +163,7 @@ const NotesApp: React.FC<NotesAppProps> = ({ onLogout }) => {
               placeholder="Search notes..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
           </div>
 
@@ -173,7 +173,7 @@ const NotesApp: React.FC<NotesAppProps> = ({ onLogout }) => {
               <select
                 value={filterTag}
                 onChange={(e) => setFilterTag(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
               >
                 <option value="">All tags</option>
                 {allTags.map(tag => (
@@ -198,7 +198,7 @@ const NotesApp: React.FC<NotesAppProps> = ({ onLogout }) => {
                   onClick={() => setSelectedNote(note)}
                   className={`p-3 rounded-lg cursor-pointer transition-colors ${
                     selectedNote?.id === note.id
-                      ? 'bg-blue-100 dark:bg-blue-900 border-blue-300 dark:border-blue-600'
+                      ? 'bg-emerald-100 dark:bg-emerald-900 border-emerald-300 dark:border-emerald-600'
                       : 'hover:bg-gray-100 dark:hover:bg-gray-700'
                   }`}
                 >
@@ -282,7 +282,7 @@ const NotesApp: React.FC<NotesAppProps> = ({ onLogout }) => {
                     <>
                       <button
                         onClick={handleSaveNote}
-                        className="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                        className="p-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors"
                       >
                         <Save className="h-5 w-5" />
                       </button>
@@ -299,7 +299,7 @@ const NotesApp: React.FC<NotesAppProps> = ({ onLogout }) => {
                         onClick={() => handleEditNote(selectedNote)}
                         className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors group"
                       >
-                        <Edit3 className="h-5 w-5 text-gray-600 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+                        <Edit3 className="h-5 w-5 text-gray-600 dark:text-gray-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-400" />
                       </button>
                       <button
                         onClick={() => handleDeleteNote(selectedNote.id)}
@@ -318,7 +318,7 @@ const NotesApp: React.FC<NotesAppProps> = ({ onLogout }) => {
                   {selectedNote.tags.map(tag => (
                     <span
                       key={tag}
-                      className="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs rounded-full"
+                      className="px-2 py-1 bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-xs rounded-full"
                     >
                       {tag}
                     </span>

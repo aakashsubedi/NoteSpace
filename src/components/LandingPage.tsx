@@ -15,25 +15,25 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       icon: Shield,
       title: 'End-to-End Encryption',
       description: 'Your notes are encrypted before they leave your device. Not even we can read them.',
-      color: 'from-purple-500 to-pink-500'
+      color: 'from-emerald-500 to-teal-500'
     },
     {
       icon: Lock,
       title: 'Zero-Knowledge Architecture',
       description: 'We never store your encryption keys. Your privacy is mathematically guaranteed.',
-      color: 'from-emerald-500 to-teal-500'
+      color: 'from-indigo-500 to-blue-500'
     },
     {
       icon: Eye,
       title: 'Private by Design',
       description: 'No tracking, no ads, no data mining. Your thoughts remain completely private.',
-      color: 'from-orange-500 to-red-500'
+      color: 'from-amber-500 to-orange-500'
     },
     {
       icon: Zap,
       title: 'Lightning Fast',
       description: 'Instant sync across all your devices with military-grade security.',
-      color: 'from-indigo-500 to-purple-500'
+      color: 'from-violet-500 to-purple-500'
     }
   ];
 
@@ -48,7 +48,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
     {
       name: 'Marcus Rodriguez',
       role: 'Journalist',
-      content: 'Privacy is crucial in my work. SecureNotes gives me peace of mind I never had before.',
+      content: 'Privacy is crucial in my work. NoteSpace gives me peace of mind I never had before.',
       rating: 5,
       avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
     },
@@ -69,27 +69,27 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50 dark:from-gray-900 dark:via-slate-900 dark:to-purple-900 transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50 dark:from-gray-900 dark:via-slate-900 dark:to-emerald-900 transition-colors duration-300">
       {/* Navigation */}
       <nav className="relative z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-700/50 sticky top-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3">
               <div className="relative">
-                <div className="h-10 w-10 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center shadow-lg">
+                <div className="h-10 w-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center shadow-lg">
                   <Shield className="h-6 w-6 text-white" />
                 </div>
-                <div className="absolute -top-1 -right-1 h-4 w-4 bg-emerald-500 rounded-full animate-pulse"></div>
+                <div className="absolute -top-1 -right-1 h-4 w-4 bg-amber-500 rounded-full animate-pulse"></div>
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                SecureNotes
+                NoteSpace
               </span>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors font-medium">Features</a>
-              <a href="#security" className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors font-medium">Security</a>
-              <a href="#testimonials" className="text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors font-medium">Reviews</a>
+              <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium">Features</a>
+              <a href="#security" className="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium">Security</a>
+              <a href="#testimonials" className="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium">Reviews</a>
               <button
                 onClick={toggleTheme}
                 className="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-105"
@@ -98,13 +98,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
               </button>
               <button
                 onClick={() => onNavigate('login')}
-                className="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors font-medium"
+                className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium"
               >
                 Sign In
               </button>
               <button
                 onClick={() => onNavigate('signup')}
-                className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-2.5 rounded-xl font-medium transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-6 py-2.5 rounded-xl font-medium transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 Get Started Free
               </button>
@@ -136,13 +136,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
               <a href="#testimonials" className="block py-2 text-gray-600 dark:text-gray-300 font-medium">Reviews</a>
               <button
                 onClick={() => onNavigate('login')}
-                className="block w-full text-left py-2 text-purple-600 dark:text-purple-400 font-medium"
+                className="block w-full text-left py-2 text-emerald-600 dark:text-emerald-400 font-medium"
               >
                 Sign In
               </button>
               <button
                 onClick={() => onNavigate('signup')}
-                className="block w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-2.5 rounded-xl font-medium transition-colors"
+                className="block w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-4 py-2.5 rounded-xl font-medium transition-colors"
               >
                 Get Started Free
               </button>
@@ -155,21 +155,21 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-indigo-400 to-violet-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative">
           <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-full text-sm font-medium text-purple-800 dark:text-purple-200 mb-8 border border-purple-200 dark:border-purple-700">
-              <span className="w-2 h-2 bg-emerald-500 rounded-full mr-2 animate-pulse"></span>
+            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-100 to-teal-100 dark:from-emerald-900/30 dark:to-teal-900/30 rounded-full text-sm font-medium text-emerald-800 dark:text-emerald-200 mb-8 border border-emerald-200 dark:border-emerald-700">
+              <span className="w-2 h-2 bg-amber-500 rounded-full mr-2 animate-pulse"></span>
               Trusted by 50,000+ users worldwide
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
               <span className="text-gray-900 dark:text-white">Your thoughts,</span>
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-600 to-emerald-600 animate-gradient-x">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 animate-gradient-x">
                 completely secure
               </span>
             </h1>
@@ -182,14 +182,14 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
               <button
                 onClick={() => onNavigate('signup')}
-                className="group bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-purple-500/25 flex items-center space-x-3"
+                className="group bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-emerald-500/25 flex items-center space-x-3"
               >
                 <span>Start Taking Secure Notes</span>
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </button>
               <button
                 onClick={() => onNavigate('login')}
-                className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-purple-500 dark:hover:border-purple-400 hover:text-purple-600 dark:hover:text-purple-400 px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 hover:shadow-lg"
+                className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-emerald-500 dark:hover:border-emerald-400 hover:text-emerald-600 dark:hover:text-emerald-400 px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 hover:shadow-lg"
               >
                 Sign In
               </button>
@@ -268,7 +268,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                   </div>
                 </div>
                 <div className="flex items-start space-x-6">
-                  <div className="h-12 w-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <div className="h-12 w-12 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
                     <span className="text-white font-bold text-lg">2</span>
                   </div>
                   <div>
@@ -281,7 +281,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                   </div>
                 </div>
                 <div className="flex items-start space-x-6">
-                  <div className="h-12 w-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <div className="h-12 w-12 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
                     <span className="text-white font-bold text-lg">3</span>
                   </div>
                   <div>
@@ -295,11 +295,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
                 </div>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-gray-800 dark:to-purple-900/20 p-12 rounded-3xl border border-purple-100 dark:border-purple-800/30">
+            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-gray-800 dark:to-emerald-900/20 p-12 rounded-3xl border border-emerald-100 dark:border-emerald-800/30">
               <div className="text-center">
                 <div className="relative mb-8">
-                  <Shield className="h-32 w-32 text-purple-600 dark:text-purple-400 mx-auto" />
-                  <div className="absolute -top-2 -right-2 h-8 w-8 bg-emerald-500 rounded-full flex items-center justify-center">
+                  <Shield className="h-32 w-32 text-emerald-600 dark:text-emerald-400 mx-auto" />
+                  <div className="absolute -top-2 -right-2 h-8 w-8 bg-amber-500 rounded-full flex items-center justify-center">
                     <CheckCircle className="h-5 w-5 text-white" />
                   </div>
                 </div>
@@ -376,7 +376,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
 
       {/* CTA Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-600 to-emerald-600 opacity-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 opacity-10"></div>
         <div className="max-w-4xl mx-auto text-center relative">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-8">
             Ready to Secure Your Thoughts?
@@ -387,7 +387,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <button
               onClick={() => onNavigate('signup')}
-              className="group bg-gradient-to-r from-purple-600 via-pink-600 to-emerald-600 hover:from-purple-700 hover:via-pink-700 hover:to-emerald-700 text-white px-10 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-purple-500/25 flex items-center space-x-3"
+              className="group bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 hover:from-emerald-700 hover:via-teal-700 hover:to-indigo-700 text-white px-10 py-5 rounded-2xl text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-emerald-500/25 flex items-center space-x-3"
             >
               <span>Get Started Free</span>
               <ArrowRight className="h-6 w-6 group-hover:translate-x-1 transition-transform" />
@@ -410,13 +410,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onNavigate }) => {
       <footer className="bg-gray-900 dark:bg-black text-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center justify-center space-x-3 mb-12">
-            <div className="h-12 w-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center shadow-lg">
+            <div className="h-12 w-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center shadow-lg">
               <Shield className="h-7 w-7 text-white" />
             </div>
-            <span className="text-2xl font-bold">SecureNotes</span>
+            <span className="text-2xl font-bold">NoteSpace</span>
           </div>
           <div className="text-center text-gray-400">
-            <p className="text-lg">© 2024 SecureNotes. Your privacy is our priority.</p>
+            <p className="text-lg">© 2024 NoteSpace. Your privacy is our priority.</p>
             <p className="mt-2">Built with ❤️ for privacy-conscious individuals worldwide.</p>
           </div>
         </div>

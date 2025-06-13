@@ -78,14 +78,14 @@ const AuthPage: React.FC<AuthPageProps> = ({ mode, onNavigate, onSwitchMode }) =
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50 dark:from-gray-900 dark:via-slate-900 dark:to-purple-900 transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50 dark:from-gray-900 dark:via-slate-900 dark:to-emerald-900 transition-colors duration-300">
       <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           {/* Header */}
           <div className="text-center">
             <button
               onClick={() => onNavigate('landing')}
-              className="inline-flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors mb-8 group"
+              className="inline-flex items-center space-x-2 text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors mb-8 group"
             >
               <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
               <span>Back to home</span>
@@ -93,13 +93,13 @@ const AuthPage: React.FC<AuthPageProps> = ({ mode, onNavigate, onSwitchMode }) =
             
             <div className="flex items-center justify-center space-x-3 mb-8">
               <div className="relative">
-                <div className="h-12 w-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center shadow-lg">
+                <div className="h-12 w-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center shadow-lg">
                   <Shield className="h-7 w-7 text-white" />
                 </div>
-                <div className="absolute -top-1 -right-1 h-4 w-4 bg-emerald-500 rounded-full animate-pulse"></div>
+                <div className="absolute -top-1 -right-1 h-4 w-4 bg-amber-500 rounded-full animate-pulse"></div>
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                SecureNotes
+                NoteSpace
               </span>
             </div>
             
@@ -134,7 +134,7 @@ const AuthPage: React.FC<AuthPageProps> = ({ mode, onNavigate, onSwitchMode }) =
                       onChange={handleInputChange}
                       className={`block w-full pl-12 pr-4 py-4 border ${
                         errors.name ? 'border-red-300' : 'border-gray-300 dark:border-gray-600'
-                      } rounded-2xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-lg`}
+                      } rounded-2xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200 text-lg`}
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -158,7 +158,7 @@ const AuthPage: React.FC<AuthPageProps> = ({ mode, onNavigate, onSwitchMode }) =
                     onChange={handleInputChange}
                     className={`block w-full pl-12 pr-4 py-4 border ${
                       errors.email ? 'border-red-300' : 'border-gray-300 dark:border-gray-600'
-                    } rounded-2xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-lg`}
+                    } rounded-2xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200 text-lg`}
                     placeholder="Enter your email"
                   />
                 </div>
@@ -181,7 +181,7 @@ const AuthPage: React.FC<AuthPageProps> = ({ mode, onNavigate, onSwitchMode }) =
                     onChange={handleInputChange}
                     className={`block w-full pl-12 pr-14 py-4 border ${
                       errors.password ? 'border-red-300' : 'border-gray-300 dark:border-gray-600'
-                    } rounded-2xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-lg`}
+                    } rounded-2xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200 text-lg`}
                     placeholder="Enter your password"
                   />
                   <button
@@ -216,7 +216,7 @@ const AuthPage: React.FC<AuthPageProps> = ({ mode, onNavigate, onSwitchMode }) =
                       onChange={handleInputChange}
                       className={`block w-full pl-12 pr-14 py-4 border ${
                         errors.confirmPassword ? 'border-red-300' : 'border-gray-300 dark:border-gray-600'
-                      } rounded-2xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-lg`}
+                      } rounded-2xl bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200 text-lg`}
                       placeholder="Confirm your password"
                     />
                     <button
@@ -238,7 +238,7 @@ const AuthPage: React.FC<AuthPageProps> = ({ mode, onNavigate, onSwitchMode }) =
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full flex justify-center py-4 px-6 border border-transparent rounded-2xl text-white bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 font-semibold text-lg transition-all duration-200 transform hover:scale-[1.02] shadow-xl hover:shadow-2xl"
+                  className="w-full flex justify-center py-4 px-6 border border-transparent rounded-2xl text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 font-semibold text-lg transition-all duration-200 transform hover:scale-[1.02] shadow-xl hover:shadow-2xl"
                 >
                   {mode === 'login' ? 'Sign In' : 'Create Account'}
                 </button>
@@ -292,7 +292,7 @@ const AuthPage: React.FC<AuthPageProps> = ({ mode, onNavigate, onSwitchMode }) =
                   <button
                     type="button"
                     onClick={() => onSwitchMode(mode === 'login' ? 'signup' : 'login')}
-                    className="ml-2 font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 transition-colors"
+                    className="ml-2 font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 dark:hover:text-emerald-300 transition-colors"
                   >
                     {mode === 'login' ? 'Sign up' : 'Sign in'}
                   </button>
