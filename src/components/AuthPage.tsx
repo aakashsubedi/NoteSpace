@@ -92,12 +92,11 @@ const AuthPage: React.FC<AuthPageProps> = ({ mode, onNavigate, onSwitchMode }) =
             </button>
             
             <div className="flex items-center justify-center space-x-3 mb-8">
-              <div className="relative">
-                <div className="h-12 w-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <Shield className="h-7 w-7 text-white" />
-                </div>
-                <div className="absolute -top-1 -right-1 h-4 w-4 bg-amber-500 rounded-full animate-pulse"></div>
-              </div>
+              <img 
+                src="/logo.png" 
+                alt="NoteSpace Logo" 
+                className="h-12 w-12 rounded-xl shadow-lg"
+              />
               <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
                 NoteSpace
               </span>

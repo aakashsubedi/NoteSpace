@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Search, Settings, Moon, Sun, LogOut, Edit3, Trash2, Save, X, Tag, Calendar, Filter } from 'lucide-react';
+import { Plus, Search, Settings, Moon, Sun, LogOut, Edit3, Trash2, Save, X, Tag, Calendar, Filter, Key, User, Mail } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Note } from '../types/Note';
 
@@ -16,6 +16,13 @@ const NotesApp: React.FC<NotesAppProps> = ({ onLogout }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterTag, setFilterTag] = useState('');
   const [showSettings, setShowSettings] = useState(false);
+  const [showChangePassword, setShowChangePassword] = useState(false);
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  });
+  const [passwordErrors, setPasswordErrors] = useState<Record<string, string>>({});
 
   // Sample data
   useEffect(() => {
@@ -104,6 +111,62 @@ const NotesApp: React.FC<NotesAppProps> = ({ onLogout }) => {
     }
   };
 
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setPasswordData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    // Clear error when user starts typing
+    if (passwordErrors[name]) {
+      setPasswordErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+  const validatePasswordForm = () => {
+    const newErrors: Record<string, string> = {};
+
+    if (!passwordData.currentPassword) {
+      newErrors.currentPassword = 'Current password is required';
+    }
+
+    if (!passwordData.newPassword) {
+      newErrors.newPassword = 'New password is required';
+    } else if (passwordData.newPassword.length < 8) {
+      newErrors.newPassword = 'Password must be at least 8 characters';
+    }
+
+    if (!passwordData.confirmPassword) {
+      newErrors.confirmPassword = 'Please confirm your new password';
+    } else if (passwordData.newPassword !== passwordData.confirmPassword) {
+      newErrors.confirmPassword = 'Passwords do not match';
+    }
+
+    if (passwordData.currentPassword === passwordData.newPassword) {
+      newErrors.newPassword = 'New password must be different from current password';
+    }
+
+    setPasswordErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChangePassword = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validatePasswordForm()) {
+      // Simulate password change
+      alert('Password changed successfully!');
+      setPasswordData({
+        currentPassword: '',
+        newPassword: '',
+        confirmPassword: ''
+      });
+      setShowChangePassword(false);
+    }
+  };
+
   const formatDate = (date: Date) => {
     return new Intl.DateTimeFormat('en-US', {
       month: 'short',
@@ -119,11 +182,13 @@ const NotesApp: React.FC<NotesAppProps> = ({ onLogout }) => {
         {/* Header */}
         <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center space-x-2">
-              <div className="h-8 w-8 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">NS</span>
-              </div>
-              <span className="font-semibold text-gray-900 dark:text-white">NoteSpace</span>
+            <div className="flex items-center space-x-3">
+              <img 
+                src="/logo.png" 
+                alt="NoteSpace Logo" 
+                className="h-10 w-10 rounded-xl shadow-lg"
+              />
+              <span className="font-semibold text-gray-900 dark:text-white text-lg">NoteSpace</span>
             </div>
             <div className="flex items-center space-x-2">
               <button
@@ -239,16 +304,141 @@ const NotesApp: React.FC<NotesAppProps> = ({ onLogout }) => {
           <div className="border-t border-gray-200 dark:border-gray-700 p-4">
             <div className="space-y-2">
               <button
-                onClick={onLogout}
-                className="w-full flex items-center space-x-2 px-3 py-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                onClick={() => {
+                  setShowChangePassword(true);
+                  setShowSettings(false);
+                }}
+                className="w-full flex items-center space-x-2 px-3 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
               >
-                <LogOut className="h-4 w-4" />
-                <span>Sign Out</span>
+                <Key className="h-4 w-4" />
+                <span>Change Password</span>
               </button>
             </div>
           </div>
         )}
+
+        {/* Sign Out Button - Always at Bottom */}
+        <div className="border-t border-gray-200 dark:border-gray-700 p-4">
+          <button
+            onClick={onLogout}
+            className="w-full flex items-center space-x-2 px-3 py-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+          >
+            <LogOut className="h-4 w-4" />
+            <span>Sign Out</span>
+          </button>
+        </div>
       </div>
+
+      {/* Change Password Modal */}
+      {showChangePassword && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 w-full max-w-md mx-4 shadow-2xl">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white">Change Password</h2>
+              <button
+                onClick={() => {
+                  setShowChangePassword(false);
+                  setPasswordData({
+                    currentPassword: '',
+                    newPassword: '',
+                    confirmPassword: ''
+                  });
+                  setPasswordErrors({});
+                }}
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+              >
+                <X className="h-5 w-5 text-gray-500" />
+              </button>
+            </div>
+
+            <form onSubmit={handleChangePassword} className="space-y-4">
+              <div>
+                <label htmlFor="currentPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Current Password
+                </label>
+                <input
+                  type="password"
+                  id="currentPassword"
+                  name="currentPassword"
+                  value={passwordData.currentPassword}
+                  onChange={handlePasswordChange}
+                  className={`w-full px-3 py-2 border ${
+                    passwordErrors.currentPassword ? 'border-red-300' : 'border-gray-300 dark:border-gray-600'
+                  } rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500`}
+                  placeholder="Enter current password"
+                />
+                {passwordErrors.currentPassword && (
+                  <p className="mt-1 text-sm text-red-600">{passwordErrors.currentPassword}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  New Password
+                </label>
+                <input
+                  type="password"
+                  id="newPassword"
+                  name="newPassword"
+                  value={passwordData.newPassword}
+                  onChange={handlePasswordChange}
+                  className={`w-full px-3 py-2 border ${
+                    passwordErrors.newPassword ? 'border-red-300' : 'border-gray-300 dark:border-gray-600'
+                  } rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500`}
+                  placeholder="Enter new password"
+                />
+                {passwordErrors.newPassword && (
+                  <p className="mt-1 text-sm text-red-600">{passwordErrors.newPassword}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Confirm New Password
+                </label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  value={passwordData.confirmPassword}
+                  onChange={handlePasswordChange}
+                  className={`w-full px-3 py-2 border ${
+                    passwordErrors.confirmPassword ? 'border-red-300' : 'border-gray-300 dark:border-gray-600'
+                  } rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500`}
+                  placeholder="Confirm new password"
+                />
+                {passwordErrors.confirmPassword && (
+                  <p className="mt-1 text-sm text-red-600">{passwordErrors.confirmPassword}</p>
+                )}
+              </div>
+
+              <div className="flex space-x-3 pt-4">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowChangePassword(false);
+                    setPasswordData({
+                      currentPassword: '',
+                      newPassword: '',
+                      confirmPassword: ''
+                    });
+                    setPasswordErrors({});
+                  }}
+                  className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="flex-1 px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-lg transition-colors"
+                >
+                  Change Password
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
