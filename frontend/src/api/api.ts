@@ -2,6 +2,8 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
+console.log('API URL:', API_URL); // Add this for debugging
+
 export const api = axios.create({
   baseURL: API_URL,
   headers: {
@@ -30,6 +32,17 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    console.error('API Error:', {
+      status: error.response?.status,
+      data: error.response?.data,
+      message: error.message,
+      config: {
+        url: error.config?.url,
+        method: error.config?.method,
+        headers: error.config?.headers
+      }
+    });
+
     if (error.code === 'ECONNREFUSED') {
       console.error('Could not connect to the server. Please make sure the backend server is running.');
       throw new Error('Server connection failed. Please ensure the backend server is running.');
