@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
-console.log('API URL:', API_URL); // Add this for debugging
+console.log('API URL:', API_URL); // Debug log
 
 export const api = axios.create({
   baseURL: API_URL,
@@ -16,6 +16,9 @@ export const api = axios.create({
 // Add request interceptor to add auth token
 api.interceptors.request.use(
   (config) => {
+    // Log the request for debugging
+    console.log('Making request to:', config.url, 'with method:', config.method);
+    
     const token = localStorage.getItem('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -30,17 +33,18 @@ api.interceptors.request.use(
 
 // Add response interceptor to handle errors
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    // Log successful responses for debugging
+    console.log('Response from:', response.config.url, 'Status:', response.status);
+    return response;
+  },
   (error) => {
     console.error('API Error:', {
+      url: error.config?.url,
+      method: error.config?.method,
       status: error.response?.status,
       data: error.response?.data,
       message: error.message,
-      config: {
-        url: error.config?.url,
-        method: error.config?.method,
-        headers: error.config?.headers
-      }
     });
 
     if (error.code === 'ECONNREFUSED') {

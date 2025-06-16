@@ -6,7 +6,7 @@ from notes.views import UserViewSet, NoteViewSet
 from django.http import JsonResponse
 
 def health_check(request):
-    return JsonResponse({"status": "healthy"})
+    return JsonResponse({"status": "healthy", "message": "API is running"})
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -17,5 +17,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('', health_check, name='health_check'),
+    path('api/health/', health_check, name='health_check'),
+    path('', health_check, name='root_health_check'),
 ]
