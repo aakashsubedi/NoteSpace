@@ -3,7 +3,7 @@ services:
     name: notespace-backend
     env: python
     buildCommand: chmod +x build.sh && ./build.sh
-    startCommand: gunicorn notespace_backend.wsgi:application
+    startCommand: gunicorn notespace_backend.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: DEBUG
         value: false
