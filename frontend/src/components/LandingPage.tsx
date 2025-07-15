@@ -425,7 +425,7 @@ const LandingPage: React.FC = () => {
         </div>
       </footer>
 
-      <style jsx>{`
+      <style>{`
         @keyframes gradient-x {
           0%, 100% {
             background-size: 200% 200%;
