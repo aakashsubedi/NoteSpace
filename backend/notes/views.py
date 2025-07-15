@@ -26,6 +26,10 @@ class UserViewSet(viewsets.ModelViewSet):
             return Response(serializer.data)
         return Response(status=status.HTTP_401_UNAUTHORIZED)
 
+    def create(self, request, *args, **kwargs):
+        logger.info(f"User create request: method={request.method}, path={request.path}, data={request.data}")
+        return super().create(request, *args, **kwargs)
+
 class NoteViewSet(viewsets.ModelViewSet):
     serializer_class = NoteSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -42,6 +46,7 @@ class NoteViewSet(viewsets.ModelViewSet):
             raise
 
     def create(self, request, *args, **kwargs):
+        logger.info(f"Note create request: user={request.user}, method={request.method}, path={request.path}, data={request.data}")
         try:
             logger.info(f"Create note request received: {request.data}")
             return super().create(request, *args, **kwargs)
@@ -59,3 +64,7 @@ class NoteViewSet(viewsets.ModelViewSet):
         except Exception as e:
             logger.error(f"Error updating note: {str(e)}")
             raise
+
+    def update(self, request, *args, **kwargs):
+        logger.info(f"Note update request: user={request.user}, method={request.method}, path={request.path}, data={request.data}")
+        return super().update(request, *args, **kwargs)

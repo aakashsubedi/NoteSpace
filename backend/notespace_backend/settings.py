@@ -2,6 +2,7 @@ from pathlib import Path
 from datetime import timedelta
 import os
 from dotenv import load_dotenv
+import dj_database_url
 
 # Load environment variables
 load_dotenv()
@@ -57,11 +58,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'notespace_backend.wsgi.application'
 
+# Database configuration
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL', f'sqlite:///{BASE_DIR}/db.sqlite3')
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -94,14 +95,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # -----------------------------
 # ✅ CORS and CSRF Settings
 # -----------------------------
+# CORS settings
 CORS_ALLOWED_ORIGINS = [
     "https://notespacee.vercel.app",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
-
 CORS_ALLOW_CREDENTIALS = True
-
 CORS_ALLOW_HEADERS = [
     'accept',
     'accept-encoding',
@@ -113,7 +113,6 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
-
 CORS_ALLOW_METHODS = [
     'DELETE',
     'GET',
@@ -122,10 +121,8 @@ CORS_ALLOW_METHODS = [
     'POST',
     'PUT',
 ]
-
 CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
 CORS_PREFLIGHT_MAX_AGE = 86400
-
 CSRF_TRUSTED_ORIGINS = [
     "https://notespacee.vercel.app"
 ]
